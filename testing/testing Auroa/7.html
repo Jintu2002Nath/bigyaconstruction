@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bigya Construction & Engineering</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #2d3748;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 200px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            font-size: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 40px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            position: relative;
+            padding: 60px 0;
+            margin: 40px 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            transform: translateX(30px);
+        }
+
+        .timeline-item:nth-child(even).visible {
+            transform: translateX(0);
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 50%;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -60px;
+            right: auto;
+        }
+
+        .ceo-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin: 50px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .ceo-image {
+            flex: 0 0 300px;
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .ceo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .ceo-image img.active {
+            opacity: 1;
+        }
+
+        .team-section {
+            margin: 50px 0;
+        }
+
+        .team-cards {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        .team-cards::-webkit-scrollbar {
+            display: none;
+        }
+
+        .team-card {
+            flex: 0 0 300px;
+            background: white;
+            color: #2d3748;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid #a8edea;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-card.yellow {
+            border: 2px solid #fed6e3;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: white;
+            color: #2d3748;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid #a8edea;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #fed6e3;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #a8edea 0%, #d6f9fe 100%);
+            color: #2d3748;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1, h2, h3 {
+            color: #2d3748;
+        }
+        .services-grid,
+    .service-card {
+        display: none;
+    }
+
+        @media (max-width: 768px) {
+            .ceo-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .ceo-image {
+                flex: 0 0 auto;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-content::after {
+                left: -49px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -49px;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Bigya Construction & Engineering</h1>
+        <div class="role1"></div>
+    </div>
+
+    <div class="container">
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-value="50">0</div>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-value="100">0</div>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-value="25">0</div>
+                    <p>Team Members</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-value="2">0</div>
+                    <p>Years Experience</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ceo-section">
+            <div class="ceo-image">
+                <img src="../../images 1.jpg" alt="Biraj Chetry - CEO" class="active">
+                <img src="../../images 2.jpg" alt="Biraj Chetry - CEO 2">
+                <img src="../../images 3.jpg" alt="Biraj Chetry - CEO 3">
+            </div>
+            <div class="ceo-info">
+                <h2>Biraj Chetry</h2>
+                <p>CEO & Founder</p>
+                <p>B.tech & M.tech (P), Design of civil engineering structure from Jorhat engineering College</p>
+                <p>A highly motivated and dynamic Civil Engineer with extensive hands-on experience in construction supervision, project management, safety engineering, and planning. Successfully managed Bigya Construction and Engineering for the past two years, completing 50+ residential and industrial projects.</p>
+                <button onclick="window.location.href='#'">Download CV</button>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2>Our Leadership Team</h2>
+            <div class="team-cards" id="teamCards">
+                <div class="team-card">
+                    <h3>Karan Chetry</h3>
+                    <p>Manager</p>
+                    <p>Contact: 8453357400</p>
+                    <p>Email: karanchetry399@gmail.com</p>
+                </div>
+                <div class="team-card yellow">
+                    <h3>Tapan Chetry</h3>
+                    <p>Accountant & Senior Manager</p>
+                    <p>B.com & MBA in Finance</p>
+                    <p>Contact: 8638049184</p>
+                    <p>Email: tapanchetry54@gmail.com</p>
+                </div>
+                <div class="team-card">
+                    <h3>Amardeep Sarma</h3>
+                    <p>Project Manager & Sr. Manager</p>
+                    <p>Engineer Having experience in Indian oil & P.H.E</p>
+                    <p>Contact: 9101026360</p>
+                    <p>Email: amar.deepsarma.a02@gmail.com</p>
+                </div>
+                <div class="team-card yellow">
+                    <h3>Ranjit Kurmi</h3>
+                    <p>Consultant Engineer</p>
+                    <p>B.tech Civil Engineering from Central Institute of Technology, Kokrajhar</p>
+                    <p>Contact: 9101111316</p>
+                    <p>Email: ranjitkurmi08@gmail.com</p>
+                </div>
+            </div>
+            <div class="scroll-buttons">
+                <button onclick="scrollTeam('left')">Previous</button>
+                <button onclick="scrollTeam('right')">Next</button>
+            </div>
+        </div>
+
+ </div>
+
+        <div class="timeline-section">
+            <h2 style="text-align: center; margin-bottom: 40px;">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2022</h3>
+                        <p>Company founded with a vision to revolutionize the construction industry</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2023</h3>
+                        <p>Expanded services to include comprehensive engineering solutions and training programs</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2024</h3>
+                        <p>Achieved milestone of 50+ successful projects and established strong client relationships</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CEO Image Animation
+        function rotateCEOImages() {
+            const images = document.querySelectorAll('.ceo-image img');
+            let currentIndex = 0;
+
+            setInterval(() => {
+                images.forEach(img => img.classList.remove('active'));
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add('active');
+            }, 3000);
+        }
+
+        // Team Cards Scroll
+        function scrollTeam(direction) {
+            const container = document.getElementById('teamCards');
+            const scrollAmount = 330;
+            if (direction === 'left') {
+                container.scrollLeft -= scrollAmount;
+            }else {
+                container.scrollLeft += scrollAmount;
+            }
+        }
+
+        // Stats Counter Animation
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-value'));
+                let current = 0;
+                const increment = target / 50;
+                const duration = 2000; // 2 seconds
+                const stepTime = duration / 50;
+
+                const counter = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(counter);
+                    }
+                    stat.textContent = Math.floor(current);
+                }, stepTime);
+            });
+        }
+
+        // Timeline Animation
+        function observeTimeline() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // Initialize all animations when page loads
+        window.onload = function() {
+            rotateCEOImages();
+            animateStats();
+            observeTimeline();
+        };
+    </script>
+
+
+        <script>
+        var typeData = new Typed(".role1", {
+            strings: [
+                "We build your dream house",
+                "Excellence in Construction",
+                "Quality Engineering Solutions",
+                "Professional Project Management",
+                "Your Trusted Building Partner"
+            ],
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 80,
+            backDelay: 1000,
+        });
+    </script>
+</body>
+</html>

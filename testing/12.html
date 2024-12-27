@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        .testing-section {
+            background: linear-gradient(rgba(12, 11, 11, 0.8), rgba(83, 71, 71, 0.8));
+            min-height: 100vh;
+            padding: 4rem 1rem;
+        }
+
+        .testing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card-inner {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .card-inner:hover {
+            transform: translateY(-5px);
+        }
+
+        .testing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            color: #1a5f7a;
+            position: relative;
+            padding-bottom: 0.625rem;
+        }
+
+        .testing-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #1a5f7a;
+        }
+
+        .testing-card ul {
+            list-style: none;
+        }
+
+        .test-item {
+            position: relative;
+            font-size: 1rem;
+            color: #444;
+            margin-bottom: 0.75rem;
+            padding-left: 1.25rem;
+            cursor: pointer;
+        }
+
+        .test-item::before {
+            content: '•';
+            color: #1a5f7a;
+            position: absolute;
+            left: 0;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            position: absolute;
+            background-color: #1a5f7a;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            width: 280px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .testing-section {
+                padding: 2rem 1rem;
+            }
+            
+            .tooltip {
+                width: 220px;
+                font-size: 0.85rem;
+            }
+            
+            .card-inner {
+                padding: 1.25rem;
+            }
+            
+            .testing-card h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .testing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tooltip {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="testing-section">
+        <div class="testing-grid">
+            <div class="testing-card">
+                <div class="card-inner">
+                    <h3>Material Testing</h3>
+                    <ul>
+                        <li class="test-item" data-tooltip="Measures the compressive strength of concrete by testing cube-shaped samples, ensuring the material meets design specifications.">
+                            Cube Test
+                        </li>
+                        <li class="test-item" data-tooltip="Evaluates the quality, strength, and water absorption capacity of bricks to ensure their suitability for construction.">
+                            Brick Testing
+                        </li>
+                        <li class="test-item" data-tooltip="Analyzes properties like setting time, fineness, and strength of cement to ensure compliance with industry standards.">
+                            Cement Testing
+                        </li>
+                        <li class="test-item" data-tooltip="Determines the workability, strength, and durability of concrete mixtures used in construction projects.">
+                            Concrete Testing
+                        </li>
+                        <li class="test-item" data-tooltip="Assesses the tensile strength, ductility, and elasticity of steel to verify its performance under various loads.">
+                            Steel Testing
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="testing-card">
+                <div class="card-inner">
+                    <h3>Structural Testing</h3>
+                    <ul>
+                        <li class="test-item" data-tooltip="Checks the structural integrity by applying loads to assess its ability to bear weight under designed conditions.">
+                            Load Testing
+                        </li>
+                        <li class="test-item" data-tooltip="Inspects materials and structures for defects without causing damage, ensuring safety and reliability.">
+                            Non-Destructive Testing (NDT)
+                        </li>
+                        <li class="test-item" data-tooltip="Measures the displacement or bending of a structure under load to evaluate its flexibility and strength.">
+                            Deflection Testing
+                        </li>
+                        <li class="test-item" data-tooltip="Tests the bending strength of materials like beams to ensure they can withstand expected stresses.">
+                            Flexural Testing
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="testing-card">
+                <div class="card-inner">
+                    <h3>Geotechnical Testing</h3>
+                    <ul>
+                        <li class="test-item" data-tooltip="Determines soil density and strength by measuring resistance to a standardized penetration.">
+                            Standard Penetration Test (SPT)
+                        </li>
+                        <li class="test-item" data-tooltip="Evaluates soil properties by driving a cone into the ground and measuring resistance and friction.">
+                            Cone Penetration Test (CPT)
+                        </li>
+                        <li class="test-item" data-tooltip="Assesses the load-bearing capacity of foundation piles under static conditions.">
+                            Pile Load Test
+                        </li>
+                        <li class="test-item" data-tooltip="Detects structural soundness and potential flaws in foundation piles using wave propagation techniques.">
+                            Pile Integrity Test (PIT)
+                        </li>
+                        <li class="test-item" data-tooltip="Measures the dynamic response of piles to evaluate load capacity and soil resistance.">
+                            Pile Dynamic Analysis (PDA)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="testing-card">
+                <div class="card-inner">
+                    <h3>Land Survey</h3>
+                    <ul>
+                        <li class="test-item" data-tooltip="Maps and assesses road alignment and gradient for efficient and safe construction of roadways.">
+                            Road Survey
+                        </li>
+                        <li class="test-item" data-tooltip="Measures land and building dimensions to ensure proper construction alignment and compliance with designs.">
+                            Building Survey
+                        </li>
+                        <li class="test-item" data-tooltip="Determines elevation differences across land to ensure proper leveling for construction projects.">
+                            Leveling Survey
+                        </li>
+                        <li class="test-item" data-tooltip="Surveys land for real estate development, including zoning, marking, and mapping for projects.">
+                            Real Estate Projects
+                        </li>
+                        <li class="test-item" data-tooltip="Captures land features such as elevations, contours, and natural elements for project planning.">
+                            Topographical Surveys
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const testItems = document.querySelectorAll('.test-item');
+            
+            testItems.forEach(item => {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.textContent = item.dataset.tooltip;
+                item.appendChild(tooltip);
+                
+                function positionTooltip(e) {
+                    const rect = item.getBoundingClientRect();
+                    const tooltipWidth = tooltip.offsetWidth;
+                    const windowWidth = window.innerWidth;
+                    
+                    let left = rect.right + 10;
+                    let top = rect.top - 5;
+                    
+                    if (left + tooltipWidth > windowWidth) {
+                        left = rect.left - tooltipWidth - 10;
+                    }
+                    
+                    if (left < 0) {
+                        left = rect.left;
+                        top = rect.top - tooltip.offsetHeight - 10;
+                    }
+                    
+                    tooltip.style.left = (left - rect.left) + 'px';
+                    tooltip.style.top = (top - rect.top) + 'px';
+                }
+                
+                item.addEventListener('mouseenter', (e) => {
+                    positionTooltip(e);
+                    tooltip.style.visibility = 'visible';
+                    tooltip.style.opacity = '1';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    tooltip.style.visibility = 'hidden';
+                    tooltip.style.opacity = '0';
+                });
+                
+                window.addEventListener('resize', (e) => {
+                    if (tooltip.style.visibility === 'visible') {
+                        positionTooltip(e);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Materials</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Landing Section */
+.landing-section {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('https://source.unsplash.com/1600x900/?construction,materials') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.landing-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.landing-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.landing-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.landing-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.landing-content .btn {
+    padding: 10px 20px;
+    background: #1a5f7a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.landing-content .btn:hover {
+    background: #144d61;
+}
+
+/* Form Section */
+.form-section {
+    padding: 40px;
+    background: #f9f9f9;
+}
+
+.form-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1a5f7a;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group textarea {
+    resize: none;
+}
+
+.btn {
+    display: inline-block;
+    background: #1a5f7a;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.btn:hover {
+    background: #144d61;
+}
+
+    </style>
+</head>
+<body>
+    <section class="landing-section">
+        <div class="overlay"></div>
+        <div class="landing-content">
+            <h1>Order Premium Construction Materials</h1>
+            <p>Get the highest quality materials delivered to your doorstep. Hassle-free and reliable.</p>
+            <a href="#order-form" class="btn">Order Now</a>
+        </div>
+    </section>
+
+    <section id="order-form" class="form-section">
+        <h2>Place Your Order</h2>
+        <form id="material-order-form">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="material">Material Type:</label>
+                <select id="material" name="material" required>
+                    <option value="" disabled selected>Select material</option>
+                    <option value="cement">Cement</option>
+                    <option value="steel">Steel</option>
+                    <option value="bricks">Bricks</option>
+                    <option value="concrete">Concrete</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity (in tons):</label>
+                <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Delivery Address:</label>
+                <textarea id="address" name="address" rows="4" placeholder="Enter delivery address" required></textarea>
+            </div>
+            <button type="submit" class="btn">Submit Order</button>
+        </form>
+    </section>
+
+    <script >
+        document.getElementById("material-order-form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form from refreshing the page
+    alert("Thank you for placing your order! We will get in touch with you shortly.");
+    this.reset(); // Reset the form fields
+});
+
+    </script>
+</body>
+</html>

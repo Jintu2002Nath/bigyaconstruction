@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Contact Form</title>
+    <style>
+        .expert-button123 {
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .talk-expert-btn123 {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background: #1a5f7a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .talk-expert-btn123:hover {
+            background: #134b61;
+            transform: translateY(-2px);
+        }
+
+        .form-overlay123 {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .expert-form123 {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-form123 {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .close-form123:hover {
+            color: #1a5f7a;
+        }
+
+        .form-group123 {
+            margin-bottom: 20px;
+        }
+
+        .form-group123 label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group123 input,
+        .form-group123 select,
+        .form-group123 textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group123 select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 12px;
+        }
+
+        .submit-btn123 {
+            background: #1a5f7a;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn123:hover {
+            background: #134b61;
+        }
+
+        @media (max-width: 768px) {
+            .expert-form123 {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="expert-button123">
+        <button class="talk-expert-btn123" onclick="showForm()">Talk to Our Expert</button>
+    </div>
+
+    <div class="form-overlay123" id="formOverlay">
+        <div class="expert-form123">
+            <span class="close-form123" onclick="hideForm()">&times;</span>
+            <h2 style="margin-bottom: 25px; color: #1a5f7a;">Contact Our Expert</h2>
+            <form id="expertForm" onsubmit="submitForm(event)">
+                <div class="form-group123">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div class="form-group123">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+
+                <div class="form-group123">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="form-group123">
+                    <label for="serviceType">Service Type *</label>
+                    <select id="serviceType" required onchange="updateSubServices()">
+                        <option value="">Select Service Type</option>
+                        <option value="building">Building Construction</option>
+                        <option value="testing">Testing Services</option>
+                        <option value="academic">Academic Services</option>
+                    </select>
+                </div>
+
+                <div class="form-group123">
+                    <label for="subService">Sub Service *</label>
+                    <select id="subService" required>
+                        <option value="">Select Sub Service</option>
+                    </select>
+                </div>
+
+                <div class="form-group123">
+                    <label for="description">Service Requirement Description *</label>
+                    <textarea id="description" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn123">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showForm() {
+            document.getElementById('formOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideForm() {
+            document.getElementById('formOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('expertForm').reset();
+        }
+
+        function updateSubServices() {
+            const serviceType = document.getElementById('serviceType').value;
+            const subServiceSelect = document.getElementById('subService');
+            subServiceSelect.innerHTML = '<option value="">Select Sub Service</option>';
+
+            const subServices = {
+                building: ['Residential', 'Commercial', 'Industrial', 'Interior Work', 'Exterior Work'],
+                testing: ['Material Testing', 'Structural Testing', 'Geotechnical Testing'],
+                academic: ['Structural Estimation and BBS Course', 'Diploma Engineer Course']
+            };
+
+            if (serviceType) {
+                subServices[serviceType].forEach(service => {
+                    const option = document.createElement('option');
+                    option.value = service.toLowerCase().replace(/ /g, '-');
+                    option.textContent = service;
+                    subServiceSelect.appendChild(option);
+                });
+            }
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            // Here you can add your form submission logic
+            alert('Thank you for your inquiry. Our expert will contact you soon!');
+            hideForm();
+        }
+    </script>
+</body>
+</html>

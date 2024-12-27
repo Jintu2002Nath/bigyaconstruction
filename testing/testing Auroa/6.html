@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bigya Construction & Engineering</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 20px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            margin: 50px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .stat-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        /* CEO Section */
+        .ceo-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin: 50px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .ceo-image {
+            flex: 0 0 300px;
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .ceo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .ceo-image img.active {
+            opacity: 1;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .team-member.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            margin: 50px 0;
+            padding: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin: 40px 0;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -60px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -60px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ceo-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .ceo-image {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+            }
+
+            .timeline-content::before {
+                left: -40px !important;
+            }
+        }
+
+        /* Common Styles */
+        h1, h2, h3 {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Bigya Construction & Engineering</h1>
+        <p>We build your dream house</p>
+    </div>
+
+    <div class="container">
+        <div class="stats-section">
+            <h2>Our Achievements</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div>Projects Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div>Happy Clients</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="25">0</div>
+                    <div>Team Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="2">0</div>
+                    <div>Years Experience</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ceo-section">
+            <div class="ceo-image">
+                <img src="/api/placeholder/300/400" alt="Biraj Chetry - CEO" class="active">
+                <img src="/api/placeholder/300/400" alt="Biraj Chetry - CEO 2">
+                <img src="/api/placeholder/300/400" alt="Biraj Chetry - CEO 3">
+            </div>
+            <div class="ceo-info">
+                <h2>Biraj Chetry</h2>
+                <p>CEO & Founder</p>
+                <p>B.tech & M.tech (P), Design of civil engineering structure from Jorhat engineering College</p>
+                <p>A highly motivated and dynamic Civil Engineer with extensive hands-on experience in construction supervision, project management, safety engineering, and planning. Successfully managed Bigya Construction and Engineering for the past two years, completing 50+ residential and industrial projects.</p>
+                <button onclick="window.location.href='#'">Download CV</button>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2>Our Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Karan Chetry">
+                    <h3>Karan Chetry</h3>
+                    <p>Manager</p>
+                    <p>Contact: 8453357400</p>
+                    <p>Email: karanchetry399@gmail.com</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Tapan Chetry">
+                    <h3>Tapan Chetry</h3>
+                    <p>Accountant & Senior Manager</p>
+                    <p>B.com & MBA in Finance</p>
+                    <p>Contact: 8638049184</p>
+                    <p>Email: tapanchetry54@gmail.com</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Amardeep Sarma">
+                    <h3>Amardeep Sarma</h3>
+                    <p>Project Manager & Sr. Manager</p>
+                    <p>Engineer Having experience in Indian oil & P.H.E</p>
+                    <p>Contact: 9101026360</p>
+                    <p>Email: amar.deepsarma.a02@gmail.com</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Ranjit Kurmi">
+                    <h3>Ranjit Kurmi</h3>
+                    <p>Consultant Engineer</p>
+                    <p>B.tech Civil Engineering from Central Institute of Technology, Kokrajhar</p>
+                    <p>Contact: 9101111316</p>
+                    <p>Email: ranjitkurmi08@gmail.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <h2>Our Journey</h2>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2022</h3>
+                    <p>Company founded with a vision to revolutionize construction industry</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2023</h3>
+                    <p>Expanded services to include testing and academic training</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2024</h3>
+                    <p>Achieved milestone of 50+ successful projects</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Intersection Observer for animations
+        const observerCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // For stat numbers, start counter animation
+                    if (entry.target.classList.contains('stat-card')) {
+                        const numberElement = entry.target.querySelector('.stat-number');
+                        const target = parseInt(numberElement.dataset.target);
+                        animateNumber(numberElement, target);
+                    }
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, {
+            threshold: 0.1
+        });
+
+        // Observe elements
+        document.querySelectorAll('.stat-card, .team-member, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Number animation function
+        function animateNumber(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 40);
+        }
+
+        // CEO Image Animation
+        function rotateCEOImages() {
+            const images = document.querySelectorAll('.ceo-image img');
+            let currentIndex = 0;
+
+            setInterval(() => {
+                images.forEach(img => img.classList.remove('active'));
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add('active');
+            }, 3000);
+        }
+
+        // Start the CEO image rotation when the page loads
+        window.onload = rotateCEOImages;
+    </script>
+</body>
+</html>

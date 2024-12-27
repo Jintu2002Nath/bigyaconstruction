@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bigya Construction - Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .video-container123 {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+        }
+
+        .video-container123 video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay123 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+
+        .overlay123 h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .overlay123 p {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .services-container123 {
+            padding: 70px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title123 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .building-construction123 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .service-grid123 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .service-card123 {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card123 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card123:hover img {
+            transform: scale(1.1);
+        }
+
+        .service-content123 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+
+        .service-content123 h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .service-content123 p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* .testing-section123 {
+            background: linear-gradient(rgba(12, 11, 11, 0.8), rgba(83, 71, 71, 0.8)),
+                        url('../images\ 1.jpg') center/cover no-repeat fixed;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .testing-section123 .section-title123 {
+            color: #ffffff;
+            margin-bottom: 50px;
+        }
+
+        .testing-grid123 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testing-card123 {
+            
+            perspective: 1000px;
+            height: 100%;
+        }
+
+        .card-inner123 {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.6s, box-shadow 0.6s;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .testing-card123:hover .card-inner123 {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .testing-card123 h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #1a5f7a;
+        }
+
+        .testing-card123 h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #1a5f7a;
+            transition: width 0.3s ease;
+        }
+
+        .testing-card123:hover h3::after {
+            width: 100px;
+        }
+
+        .testing-card123 ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .testing-card123 li {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .testing-card123 li::before {
+            content: '•';
+            color: #1a5f7a;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .testing-card123:hover li {
+            transform: translateX(5px);
+        } */
+
+        
+        .testing-section123 {
+            background: linear-gradient(rgba(12, 11, 11, 0.8), rgba(83, 71, 71, 0.8)),
+                        url('../images\ 1.jpg') center/cover no-repeat fixed;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .testing-section123 .section-title123 {
+            color: #ffffff;
+            margin-bottom: 50px;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .testing-grid123 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 250px)); /* Reduced card width */
+            gap: 20px; /* Reduced gap between cards */
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: start; /* Align cards to the left */
+        }
+
+        .testing-card123 {
+            perspective: 1000px;
+            height: 100%;
+        }
+
+        .card-inner123 {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px; /* Reduced padding */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.6s, box-shadow 0.6s;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .testing-card123:hover .card-inner123 {
+            transform: translateY(-5px) rotateX(5deg); /* Reduced hover lift */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .testing-card123 h3 {
+            font-size: 1.4rem; /* Reduced font size */
+            margin-bottom: 15px; /* Reduced margin */
+            position: relative;
+            padding-bottom: 10px;
+            color: #1a5f7a;
+        }
+
+        .testing-card123 h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #1a5f7a;
+            transition: width 0.3s ease;
+        }
+
+        .testing-card123:hover h3::after {
+            width: 80px;
+        }
+
+        .testing-card123 ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .testing-card123 li {
+            font-size: 1rem; /* Reduced font size */
+            color: #444;
+            margin-bottom: 10px; /* Reduced margin */
+            padding-left: 20px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .testing-card123 li::before {
+            content: '•';
+            color: #1a5f7a;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .testing-card123:hover li {
+            transform: translateX(5px);
+        }
+
+
+        .academic-section123 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 60px 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-title123 {
+                font-size: 2.5rem;
+            }
+            
+            .service-content123 h3 {
+                font-size: 1.6rem;
+            }
+            
+            .service-content123 p {
+                font-size: 1rem;
+            }
+            .testing-grid123 {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 10px;
+            }
+            
+            .testing-section123 {
+                padding: 40px 0;
+            }
+
+            .testing-section123 .section-title123 {
+                font-size: 2rem;
+                padding-left: 15px;
+            }
+            /* .testing-grid123 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .testing-section123 {
+                padding: 40px 0;
+            }*/
+        } 
+    </style>
+</head>
+<body>
+    <div class="video-container123">
+        <video autoplay muted loop>
+            <source src="../images/v1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay123">
+            <h1>Our Services</h1>
+            <p>Least estimation more satisfaction</p>
+            <p>Delivering Excellence in Construction and Engineering Since 2022</p>
+        </div>
+    </div>
+
+    <div class="building-construction123">
+        <div class="services-container123">
+            <h2 class="section-title123" data-aos="fade-up">Building Construction</h2>
+            <div class="service-grid123">
+                <div class="service-card123" data-aos="fade-up">
+                    <img src="../images/residential.webp" alt="Residential Construction">
+                    <div class="service-content123">
+                        <h3>Residential</h3>
+                        <p>Delivering safe and comfortable homes designed for modern living.</p>
+                    </div>
+                </div>
+                <div class="service-card123" data-aos="fade-up" data-aos-delay="100">
+                    <img src="../images/commercial.webp" alt="Commercial Construction">
+                    <div class="service-content123">
+                        <h3>Commercial</h3>
+                        <p>Constructing offices, retail spaces, and commercial complexes tailored to business needs.</p>
+                    </div>
+                </div>
+                <div class="service-card123" data-aos="fade-up" data-aos-delay="200">
+                    <img src="../images/industrial.webp" alt="Industrial Construction">
+                    <div class="service-content123">
+                        <h3>Industrial</h3>
+                        <p>Developing large-scale, efficient facilities with a focus on functionality and durability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="services-container123">
+        <h2 class="section-title123" data-aos="fade-up">Interior & Exterior Work</h2>
+        <div class="service-grid123">
+            <div class="service-card123" data-aos="fade-up">
+                <img src="../images/interior work.webp" alt="Interior Work">
+                <div class="service-content123">
+                    <h3>Interior Work</h3>
+                    <p>Comprehensive interior design and finishing solutions for all types of buildings.</p>
+                </div>
+            </div>
+            <div class="service-card123" data-aos="fade-up" data-aos-delay="100">
+                <img src="../images/exterior.webp" alt="Exterior Work">
+                <div class="service-content123">
+                    <h3>Exterior Work</h3>
+                    <p>Expert exterior finishing and façade solutions for lasting impressions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="testing-section123">
+        <div class="services-container123">
+            <h2 class="section-title123" data-aos="fade-up">Testing Services</h2>
+            <div class="testing-grid123">
+                <div class="testing-card123" data-aos="fade-up">
+                    <div class="card-inner123">
+                        <h3>Material Testing</h3>
+                        <ul>
+                            <li>Soil Testing</li>
+                            <li>Concrete Testing</li>
+                            <li>Steel Testing</li>
+                            <li>Bitumen Testing</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="testing-card123" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-inner123">
+                        <h3>Structural Testing</h3>
+                        <ul>
+                            <li>Load Testing</li>
+                            <li>Non-Destructive Testing (NDT)</li>
+                            <li>Deflection Testing</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="testing-card123" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-inner123">
+                        <h3>Foundation Testing</h3>
+                        <ul>
+                            <li>Pile Load Testing</li>
+                            <li>Plate Load Test</li>
+                            <li>Dynamic Cone Penetrometer Test</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="testing-card123" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-inner123">
+                        <h3>Quality Control Testing</h3>
+                        <ul>
+                            <li>Cube Test</li>
+                            <li>Brick Testing</li>
+                            <li>Tile Testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="academic-section123">
+        <div class="services-container123">
+            <h2 class="section-title123" data-aos="fade-up">Academic Services</h2>
+            <div class="service-grid123">
+                <div class="service-card123" data-aos="fade-up">
+                    <img src="../images/course1.jpg" alt="Structural Estimation">
+                    <div class="service-content123">
+                        <h3>Structural Estimation and BBS Course</h3>
+                        <p>Professional training for structural estimation and Bar Bending Schedule.</p>
+                    </div>
+                </div>
+                <div class="service-card123" data-aos="fade-up" data-aos-delay="100">
+                    <img src="../images/course2.jpg" alt="Diploma Engineer Course">
+                    <div class="service-content123">
+                        <h3>Diploma Engineer Course</h3>
+                        <p>Comprehensive training program for aspiring diploma engineers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script> 
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script> 
+</body>
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Contact Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .expert-button123 {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .talk-expert-btn123 {
+            padding: 16px 32px;
+            font-size: 1.2rem;
+            background: #1a5f7a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .talk-expert-btn123:hover {
+            background: #134b61;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .talk-expert-btn123:focus {
+            outline: 3px solid #4CAF50;
+            outline-offset: 2px;
+        }
+
+        .form-overlay123 {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .expert-form123 {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-form123 {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .close-form123:hover {
+            background: #e0e0e0;
+            color: #1a5f7a;
+        }
+
+        .close-form123:focus {
+            outline: 3px solid #4CAF50;
+            outline-offset: 2px;
+        }
+
+        .close-icon123 {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .form-title123 {
+            margin-bottom: 30px;
+            color: #1a5f7a;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .form-group123 {
+            margin-bottom: 24px;
+        }
+
+        .form-group123 label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group123 input,
+        .form-group123 select,
+        .form-group123 textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group123 input:focus,
+        .form-group123 select:focus,
+        .form-group123 textarea:focus {
+            outline: none;
+            border-color: #1a5f7a;
+        }
+
+        .form-group123 select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 12px;
+            padding-right: 40px;
+        }
+
+        .submit-btn123 {
+            background: #1a5f7a;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn123:hover {
+            background: #134b61;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .submit-btn123:focus {
+            outline: 3px solid #4CAF50;
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .expert-form123 {
+                padding: 30px 20px;
+            }
+
+            .form-title123 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .close-form123 {
+                top: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+            }
+
+            .form-group123 {
+                margin-bottom: 20px;
+            }
+
+            .talk-expert-btn123 {
+                padding: 14px 28px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Loading indicator styles */
+        .loading-spinner123 {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .loading-spinner123::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1a5f7a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success message styles */
+        .success-message123 {
+            display: none;
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background: #e8f5e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="expert-button123">
+        <button class="talk-expert-btn123" onclick="showForm()" aria-label="Open expert contact form">
+            Talk to Our Expert
+        </button>
+    </div>
+
+    <div class="form-overlay123" id="formOverlay" aria-hidden="true">
+        <div class="expert-form123" role="dialog" aria-labelledby="formTitle">
+            <button class="close-form123" onclick="hideForm()" aria-label="Close form">
+                <span class="close-icon123" aria-hidden="true">&times;</span>
+            </button>
+            <h2 id="formTitle" class="form-title123">Contact Our Expert</h2>
+            
+            <form id="expertForm" onsubmit="submitForm(event)" novalidate>
+                <div class="form-group123">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" required aria-required="true">
+                </div>
+
+                <div class="form-group123">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" required aria-required="true" pattern="[0-9]{10}">
+                </div>
+
+                <div class="form-group123">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" required aria-required="true">
+                </div>
+
+                <div class="form-group123">
+                    <label for="serviceType">Service Type *</label>
+                    <select id="serviceType" required aria-required="true" onchange="updateSubServices()">
+                        <option value="">Select Service Type</option>
+                        <option value="building">Building Construction</option>
+                        <option value="testing">Testing Services</option>
+                        <option value="academic">Academic Services</option>
+                    </select>
+                </div>
+
+                <div class="form-group123">
+                    <label for="subService">Sub Service *</label>
+                    <select id="subService" required aria-required="true">
+                        <option value="">Select Sub Service</option>
+                    </select>
+                </div>
+
+                <div class="form-group123">
+                    <label for="description">Service Requirement Description *</label>
+                    <textarea id="description" rows="4" required aria-required="true"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn123">Submit Request</button>
+            </form>
+
+            <div class="loading-spinner123" id="loadingSpinner" aria-hidden="true"></div>
+            <div class="success-message123" id="successMessage" aria-hidden="true">
+                Thank you for your inquiry. Our expert will contact you soon!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showForm() {
+            const overlay = document.getElementById('formOverlay');
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            overlay.setAttribute('aria-hidden', 'false');
+            
+            // Focus trap
+            const form = document.querySelector('.expert-form123');
+            const focusableElements = form.querySelectorAll('button, input, select, textarea');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            firstElement.focus();
+
+            form.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement) {
+                            e.preventDefault();
+                            lastElement.focus();
+                        }
+                    } else {
+                        if (document.activeElement === lastElement) {
+                            e.preventDefault();
+                            firstElement.focus();
+                        }
+                    }
+                }
+                if (e.key === 'Escape') {
+                    hideForm();
+                }
+            });
+        }
+
+        function hideForm() {
+            const overlay = document.getElementById('formOverlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('expertForm').reset();
+            overlay.setAttribute('aria-hidden', 'true');
+            document.querySelector('.talk-expert-btn123').focus();
+            
+            // Reset loading and success states
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        function updateSubServices() {
+            const serviceType = document.getElementById('serviceType').value;
+            const subServiceSelect = document.getElementById('subService');
+            subServiceSelect.innerHTML = '<option value="">Select Sub Service</option>';
+
+            const subServices = {
+                building: [
+                    'Residential Construction',
+                    'Commercial Construction',
+                    'Industrial Construction',
+                    'Interior Work',
+                    'Exterior Work'
+                ],
+                testing: [
+                    'Material Testing',
+                    'Structural Testing',
+                    'Geotechnical Testing',
+                    'Land Survey'
+                ],
+                academic: [
+                    'Structural Estimation and BBS Course',
+                    'Diploma Engineer Course'
+                ]
+            };
+
+            const materialTestingServices = [
+                'Cube Test',
+                'Brick Testing',
+                'Cement Testing',
+                'Concrete Testing',
+                'Steel Testing',
+                'Bitumen Testing'
+            ];
+
+            const structuralTestingServices = [
+                'Load Testing',
+                'Non-Destructive Testing (NDT)',
+                'Deflection Testing',
+                'Flexural Testing'
+            ];
+
+            const geotechnicalTestingServices = [
+                'Standard Penetration Test (SPT)',
+                'Cone Penetration Test (CPT)',
+                'Pile Load Test (Static Load Test)',
+                'Pile Integrity Test (PIT)',
+                'Pile Dynamic Analysis (PDA)',
+                'Friction Testing (for Bored Piles)',
+                'Radial Load Test'
+            ];
+
+            const landSurveyServices = [
+                'Road Survey',
+                'Building Survey',
+                'Leveling Survey',
+                'Real Estate Projects',
+                'Topographical Surveys',
+                'Layout Design & Marking'
+            ];
+
+            if (serviceType) {
+                if (serviceType === 'testing') {
+                    subServices[serviceType].forEach(service => {
+                        const option = document.createElement('option');
+                        option.value = service.toLowerCase().replace(/ /g, '-');
+                        option.textContent = service;
+                        option.style.fontWeight = 'bold';
+                        subServiceSelect.appendChild(option);
+
+                        // Add sub-categories based on the main category
+                        let subCategoryServices;
+                        if (service === 'Material Testing') {
+                            subCategoryServices = materialTestingServices;
+                        } else if (service === 'Structural Testing') {
+                            subCategoryServices = structuralTestingServices;
+                        } else if (service === 'Geotechnical Testing') {
+                            subCategoryServices = geotechnicalTestingServices;
+                        } else if (service === 'Land Survey') {
+                            subCategoryServices = landSurveyServices;
+                        }
+
+                        if (subCategoryServices) {
+                            subCategoryServices.forEach(subService => {
+                                const subOption = document.createElement('option');
+                                subOption.value = subService.toLowerCase().replace(/ /g, '-');
+                                subOption.textContent = `  • ${subService}`;
+                                subServiceSelect.appendChild(subOption);
+                            });
+                        }
+                    });
+                } else {
+                    subServices[serviceType].forEach(service => {
+                        const option = document.createElement('option');
+                        option.value = service.toLowerCase().replace(/ /g, '-');
+                        option.textContent = service;
+                        subServiceSelect.appendChild(option);
+                    });
+                }
+            }
+        }
+
+        function validateForm() {
+            const form = document.getElementById('expertForm');
+            const inputs = form.querySelectorAll('input, select, textarea');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (input.required && !input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#ff4444';
+                    showError(input, 'This field is required');
+                } else if (input.type === 'email' && input.value) {
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailPattern.test(input.value)) {
+                        isValid = false;
+                        input.style.borderColor = '#ff4444';
+                        showError(input, 'Please enter a valid email address');
+                    } else {
+                        resetError(input);
+                    }
+                } else if (input.type === 'tel' && input.value) {
+                    const phonePattern = /^[0-9]{10}$/;
+                    if (!phonePattern.test(input.value.replace(/\D/g, ''))) {
+                        isValid = false;
+                        input.style.borderColor = '#ff4444';
+                        showError(input, 'Please enter a valid 10-digit phone number');
+                    } else {
+                        resetError(input);
+                    }
+                } else {
+                    resetError(input);
+                }
+            });
+
+            return isValid;
+        }
+
+        function showError(input, message) {
+            let errorDiv = input.nextElementSibling;
+            if (!errorDiv || !errorDiv.classList.contains('error-message')) {
+                errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.style.color = '#ff4444';
+                errorDiv.style.fontSize = '0.8rem';
+                errorDiv.style.marginTop = '4px';
+                input.parentNode.insertBefore(errorDiv, input.nextSibling);
+            }
+            errorDiv.textContent = message;
+            input.setAttribute('aria-invalid', 'true');
+            input.setAttribute('aria-describedby', `${input.id}-error`);
+        }
+
+        function resetError(input) {
+            const errorDiv = input.nextElementSibling;
+            if (errorDiv && errorDiv.classList.contains('error-message')) {
+                errorDiv.remove();
+            }
+            input.style.borderColor = '#ddd';
+            input.removeAttribute('aria-invalid');
+            input.removeAttribute('aria-describedby');
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
+
+            const form = document.getElementById('expertForm');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const successMessage = document.getElementById('successMessage');
+
+            // Show loading spinner
+            loadingSpinner.style.display = 'block';
+            form.style.opacity = '0.5';
+            form.style.pointerEvents = 'none';
+
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                loadingSpinner.style.display = 'none';
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                successMessage.setAttribute('aria-hidden', 'false');
+
+                // Close form after showing success message
+                setTimeout(() => {
+                    hideForm();
+                }, 3000);
+            }, 1500);
+        }
+
+        // Add event listeners for input validation on blur
+        document.querySelectorAll('#expertForm input, #expertForm select, #expertForm textarea').forEach(input => {
+            input.addEventListener('blur', () => {
+                if (input.value) {
+                    resetError(input);
+                }
+            });
+
+            input.addEventListener('input', () => {
+                if (input.hasAttribute('aria-invalid')) {
+                    resetError(input);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

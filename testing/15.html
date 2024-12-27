@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Landing Section */
+        .landing-section123 {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .landing-section123 .overlay123 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .landing-content123 {
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .landing-content123 h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .landing-content123 p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .landing-content123 .btn123 {
+            padding: 10px 20px;
+            background: #1a5f7a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .landing-content123 .btn123:hover {
+            background: #144d61;
+        }
+
+        /* Form Section */
+        .form-section123 {
+            padding: 50px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container123 {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .form-content123 {
+            text-align: center;
+        }
+
+        .form-content123 h1 {
+            font-size: 1.8rem;
+            color: #1a5f7a;
+            margin-bottom: 10px;
+        }
+
+        .form-content123 p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        form .form-group123 {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        form .form-group123 label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        form .form-group123 input,
+        form .form-group123 select,
+        form .form-group123 textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 0.9rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form .form-group123 input:focus,
+        form .form-group123 select:focus,
+        form .form-group123 textarea:focus {
+            border-color: #1a5f7a;
+            box-shadow: 0 0 8px rgba(26, 95, 122, 0.5);
+        }
+
+        form .submit-btn123 {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            background: #1a5f7a;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        form .submit-btn123:hover {
+            background: #144d61;
+            transform: translateY(-3px);
+        }
+
+        /* Sub-category styling */
+        .sub-category123 {
+            margin-top: 10px;
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Additional responsive styles */
+        @media (max-width: 768px) {
+            .landing-content123 h1 {
+                font-size: 2rem;
+            }
+            .form-container123 {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Section -->
+    <section class="landing-section123">
+        <div class="overlay123"></div>
+        <div class="landing-content123">
+            <h1>Order Premium Construction Materials</h1>
+            <p>Get the highest quality materials delivered to your doorstep. Hassle-free and reliable.</p>
+            <a href="#order-form" class="btn123">Order Now</a>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="order-form" class="form-section123">
+        <div class="form-container123">
+            <div class="form-content123">
+                <h1>Place Your Material Order</h1>
+                <p>Fill out the form below, and we'll deliver your order promptly!</p>
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="ecc17cfa-3922-4ebf-a33f-3cb1313586b8">
+                    
+                    <!-- Basic Information -->
+                    <div class="form-group123">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group123">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group123">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <!-- Material Selection -->
+                    <div class="form-group123">
+                        <label for="material">Material Category</label>
+                        <select id="material" name="material" required onchange="showSubCategory()">
+                            <option value="" disabled selected>Select material</option>
+                            <option value="cement">Cement</option>
+                            <option value="bar">Steel Bars</option>
+                            <option value="bricks">Bricks</option>
+                            <option value="sand">Sand</option>
+                            <option value="stone">Stone Chips</option>
+                            <option value="tiles">Tiles</option>
+                            <option value="roof">Roofing</option>
+                            <option value="window">Windows</option>
+                        </select>
+                    </div>
+
+                    <!-- Cement Sub-category -->
+                    <div id="cement-sub" class="sub-category123">
+                        <div class="form-group123">
+                            <label for="cement-brand">Brand</label>
+                            <select name="cement-brand" id="cement-brand">
+                                <option value="star">Star</option>
+                                <option value="ultratech">Ultratech</option>
+                                <option value="dalmia">Dalmia</option>
+                                <option value="ambuja">Ambuja</option>
+                            </select>
+                        </div>
+                        <div class="form-group123">
+                            <label for="cement-quantity">Quantity (in Bags)</label>
+                            <input type="number" id="cement-quantity" name="cement-quantity" min="1">
+                        </div>
+                    </div>
+
+                    <!-- Steel Bars Sub-category -->
+                    <div id="bar-sub" class="sub-category123">
+                        <div class="form-group123">
+                            <label for="bar-brand">Brand</label>
+                            <select name="bar-brand" id="bar-brand">
+                                <option value="lotus">Lotus</option>
+                                <option value="ultramax">Ultra max</option>
+                                <option value="sel">SEL tiger</option>
+                                <option value="shyam">Shyam</option>
+                                <option value="tata">TATA</option>
+                                <option value="jsw">JSW</option>
+                            </select>
+                        </div>
+                        <div class="form-group123">
+                            <label for="bar-quantity">Quantity (in Tons)</label>
+                            <input type="number" id="bar-quantity" name="bar-quantity" min="1">
+                        </div>
+                    </div>
+
+                    <!-- Bricks Sub-category -->
+                    <div id="bricks-sub" class="sub-category123">
+                        <div class="form-group123">
+                            <label for="brick-type">Type</label>
+                            <select name="brick-type" id="brick-type">
+                                <option value="red">Red Brick</option>
+                                <option value="aac">AAC Block</option>
+                            </select>
+                        </div>
+                        <div class="form-group123">
+                            <label for="brick-quantity">Quantity (in Numbers)</label>
+                            <input type="number" id="brick-quantity" name="brick-quantity" min="1">
+                        </div>
+                    </div>
+
+                    <!-- Sand Sub-category -->
+                    <div id="sand-sub" class="sub-category123">
+                        <div class="form-group123">
+                            <label for="sand-type">Type</label>
+                            <select name="sand-type" id="sand-type">
+                                <option value="white">White Sand</option>
+                                <option value="brown">Brown Sand</option>
+                            </select>
+                        </div>
+                        <div class="form-group123">
+                            <label for="sand-quantity">Quantity (in Cubic Meters)</label>
+                            <input type="number" id="sand-quantity" name="sand-quantity" min="1">
+                        </div>
+                    </div>
+
+                    <!-- Stone Chips Sub-category -->
+                    <div id="stone-sub" class="sub-category123">
+                        <div class="form-group123">
+                            <label for="stone-size">Size</label>
+                            <select name="stone-size" id="stone-size">
+                                <option value="half">1/2 inch</option>
+                                <option value="threefourth">3/4 inch</option>
+                            </select>
+                        </div>
+                        <div class="form-group123">
+                            <label for="stone-quantity">Quantity (in Cubic Meters)</label>
+                            <input type="number" id="stone-quantity" name="stone-quantity" min="1">
+                        </div>
+                    </div>
+
+                    <!-- Tiles Sub-category -->
+                    <div id="tiles-sub" class="sub-category123">
+                        <div class="form-group123">
+                            <label for="tiles-brand">Brand</label>
+                            <select name="tiles-brand" id="tiles-brand">
+                                <option value="kajaria">Kajaria</option>
+                                <option value="hrjohnson">H R Johnson</option>
+                                <option value="hindware">Hindware</option>
+                                <option value="agl">AGL</option>
+                            </select>
+                        </div>
+                        <div class="form-group123">
+                            <label for="tiles-quantity">Quantity (in Boxes)</label>
+                            <input type="number" id="tiles-quantity" name="tiles-quantity" min="1">
+                        </div>
+                    </div>
+
+                    <!-- Roof Sub-category -->
+                    <div id="roof-sub" class="sub-category123">
+                        <div class="form-group123">
+                            <label for="roof-thickness">Thickness</label>
+                            <select name="roof-thickness" id="roof-thickness">
+                                <option value="0.35">0.35</option>
+                                <option value="0.40">0.40</option>
+                                <option value="0.45">0.45</option>
+                                <option value="0.50">0.50</option>
+                            </select>
+                        </div>
+                        <div class="form-group123">
+                            <label for="roof-quantity">Quantity (in Square Meters)</label>
+                            <input type="number" id="roof-quantity" name="roof-quantity" min="1">
+                        </div>
+                    </div>
+
+                    <!-- Window Sub-category -->
+                    <div id="window-sub" class="sub-category123">
+                        <div class="form-group123">
+                            <label for="window-type">Type</label>
+                            <select name="window-type" id="window-type">
+                                <option value="aluminium">Aluminium</option>
+                                <option value="upvc">UPVC</option>
+                                <option value="wooden">Wooden</option>
+                            </select>
+                        </div>
+                        <div class="form-group123">
+                            <label for="window-quantity">Quantity (in Units)</label>
+                            <input type="number" id="window-quantity" name="window-quantity" min="1">
+                        </div>
+                    </div>
+
+                    <!-- Delivery Address -->
+                    <div class="form-group123">
+                        <label for="address">Delivery Address</label>
+                        <textarea id="address" name="address" rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn123">Submit Order</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function showSubCategory() {
+            // Hide all sub-categories first
+            const subCategories = document.querySelectorAll('.sub-category123');
+            subCategories.forEach(cat => cat.style.display = 'none');
+            
+            // Get selected material
+            const material = document.getElementById('material').value;
+            
+            // Show relevant sub-category
+            const subCategory = document.getElementById(material + '-sub');
+            if (subCategory) {
+                subCategory.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

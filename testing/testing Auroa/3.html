@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Materials</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Landing Section */
+.landing-section {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('../../images/v1.mp4') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: #fff;
+}
+
+.landing-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.landing-content {
+    z-index: 2;
+    max-width: 600px;
+}
+
+.landing-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.landing-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.landing-content .btn {
+    padding: 10px 20px;
+    background: #1a5f7a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.landing-content .btn:hover {
+    background: #144d61;
+}
+
+/* Form Section */
+.form-section {
+    padding: 50px 20px;
+    /* background: #f9f9f9; */
+    background: 
+            url('../../pic1.webp') center/cover no-repeat fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.form-content {
+    text-align: center;
+}
+
+.form-content h1 {
+    font-size: 1.8rem;
+    color: #1a5f7a;
+    margin-bottom: 10px;
+}
+
+.form-content p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+form .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+form .form-group input,
+form .form-group select,
+form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form .form-group input:focus,
+form .form-group select:focus,
+form .form-group textarea:focus {
+    border-color: #1a5f7a;
+    box-shadow: 0 0 8px rgba(26, 95, 122, 0.5);
+}
+
+form .submit-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background: #1a5f7a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+form .submit-btn:hover {
+    background: #144d61;
+    transform: translateY(-3px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Landing Section -->
+    <section class="landing-section">
+        <div class="overlay"></div>
+        <div class="landing-content">
+            <h1>Order Premium Construction Materials</h1>
+            <p>Get the highest quality materials delivered to your doorstep. Hassle-free and reliable.</p>
+            <a href="#order-form" class="btn">Order Now</a>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="order-form" class="form-section">
+        <div class="form-container">
+            <div class="form-content">
+                <h1>Place Your Material Order</h1>
+                <p>Fill out the form below, and we'll deliver your order promptly!</p>
+                <form id="integrated-order-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="material">Material Type</label>
+                        <select id="material" name="material" required>
+                            <option value="" disabled selected>Select material</option>
+                            <option value="cement">Cement</option>
+                            <option value="steel">Steel</option>
+                            <option value="bricks">Bricks</option>
+                            <option value="concrete">Concrete</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity (in tons)</label>
+                        <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Delivery Address</label>
+                        <textarea id="address" name="address" rows="4" placeholder="Enter delivery address" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Order</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById("integrated-order-form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
+    alert("Your order has been successfully placed! We will contact you shortly.");
+    this.reset(); // Clear the form fields
+});
+
+    </script>
+</body>
+</html>

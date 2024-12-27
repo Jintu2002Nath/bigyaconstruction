@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bigya Construction - Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .video-container123 {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+        }
+
+        .video-container123 video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay123 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+
+        .overlay123 h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .overlay123 p {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .services-container123 {
+            padding: 70px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title123 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .building-construction123 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .service-grid123 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .service-card123 {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card123 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card123:hover img {
+            transform: scale(1.1);
+        }
+
+        .service-content123 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+
+        .service-content123 h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .service-content123 p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .academic-section123 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 60px 0;
+        }
+
+        /* Testing Section Styles */
+        .testing-section123 {
+            background: linear-gradient(rgba(12, 11, 11, 0.8), rgba(83, 71, 71, 0.8));
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .testing-grid123 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testing-card123 {
+            perspective: 1000px;
+        }
+
+        .card-inner123 {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testing-card123 h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #1a5f7a;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .testing-card123 h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #1a5f7a;
+            transition: width 0.3s ease;
+        }
+
+        .testing-card123:hover h3::after {
+            width: 100px;
+        }
+
+        .testing-card123 ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .test-item {
+            position: relative;
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .test-item:hover {
+            color: #1a5f7a;
+        }
+
+        .test-item::before {
+            content: '•';
+            color: #1a5f7a;
+            position: absolute;
+            left: 0;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            position: absolute;
+            background-color: rgba(26, 95, 122, 0.95);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            width: 280px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            z-index: 9999;
+            left: 120%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent rgba(26, 95, 122, 0.95) transparent transparent;
+        }
+
+        .test-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .section-title123 {
+                font-size: 2.5rem;
+            }
+            
+            .service-content123 h3 {
+                font-size: 1.6rem;
+            }
+            
+            .service-content123 p {
+                font-size: 1rem;
+            }
+
+            .tooltip {
+                left: 50%;
+                top: -100%;
+                transform: translateX(-50%);
+                margin-top: -10px;
+            }
+
+            .tooltip::before {
+                left: 50%;
+                top: 100%;
+                transform: translateX(-50%);
+                border-color: rgba(26, 95, 122, 0.95) transparent transparent transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container123">
+        <video autoplay muted loop>
+            <source src="../images/v1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay123">
+            <h1>Our Services</h1>
+            <p>Least estimation more satisfaction</p>
+            <p>Delivering Excellence in Construction and Engineering Since 2022</p>
+        </div>
+    </div>
+
+    <div class="building-construction123">
+        <div class="services-container123">
+            <h2 class="section-title123" data-aos="fade-up">Building Construction</h2>
+            <div class="service-grid123">
+                <div class="service-card123" data-aos="fade-up">
+                    <img src="../images/residential.webp" alt="Residential Construction">
+                    <div class="service-content123">
+                        <h3>Residential</h3>
+                        <p>Delivering safe and comfortable homes designed for modern living.</p>
+                    </div>
+                </div>
+                <div class="service-card123" data-aos="fade-up" data-aos-delay="100">
+                    <img src="../images/commercial.webp" alt="Commercial Construction">
+                    <div class="service-content123">
+                        <h3>Commercial</h3>
+                        <p>Constructing offices, retail spaces, and commercial complexes tailored to business needs.</p>
+                    </div>
+                </div>
+                <div class="service-card123" data-aos="fade-up" data-aos-delay="200">
+                    <img src="../images/industrial.webp" alt="Industrial Construction">
+                    <div class="service-content123">
+                        <h3>Industrial</h3>
+                        <p>Developing large-scale, efficient facilities with a focus on functionality and durability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="services-container123">
+        <h2 class="section-title123" data-aos="fade-up">Interior & Exterior Work</h2>
+        <div class="service-grid123">
+            <div class="service-card123" data-aos="fade-up">
+                <img src="../images/interior work.webp" alt="Interior Work">
+                <div class="service-content123">
+                    <h3>Interior Work</h3>
+                    <p>Comprehensive interior design and finishing solutions for all types of buildings.</p>
+                </div>
+            </div>
+            <div class="service-card123" data-aos="fade-up" data-aos-delay="100">
+                <img src="../images/exterior.webp" alt="Exterior Work">
+                <div class="service-content123">
+                    <h3>Exterior Work</h3>
+                    <p>Expert exterior finishing and façade solutions for lasting impressions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="testing-section123">
+        <div class="testing-grid123">
+            <div class="testing-card123">
+                <div class="card-inner123">
+                    <h3>Material Testing</h3>
+                    <ul>
+                        <li class="test-item">
+                            Cube Test
+                            <span class="tooltip">Measures the compressive strength of concrete by testing cube-shaped samples, ensuring the material meets design specifications.</span>
+                        </li>
+                        <li class="test-item">
+                            Brick Testing
+                            <span class="tooltip">Evaluates the quality, strength, and water absorption capacity of bricks to ensure their suitability for construction.</span>
+                        </li>
+                        <li class="test-item">
+                            Cement Testing
+                            <span class="tooltip">Analyzes properties like setting time, fineness, and strength of cement to ensure compliance with industry standards.</span>
+                        </li>
+                        <li class="test-item">
+                            Concrete Testing
+                            <span class="tooltip">Determines the workability, strength, and durability of concrete mixtures used in construction projects.</span>
+                        </li>
+                        <li class="test-item">
+                            Steel Testing
+                            <span class="tooltip">Assesses the tensile strength, ductility, and elasticity of steel to verify its performance under various loads.</span>
+                        </li>
+                        <li class="test-item">
+                            Bitumen Testing
+                            <span class="tooltip">Examines the quality and properties of bitumen, such as viscosity and penetration, to ensure reliable road construction.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="testing-card123">
+                <div class="card-inner123">
+                    <h3>Structural Testing</h3>
+                    <ul>
+                        <li class="test-item">
+                            Load Testing
+                            <span class="tooltip">Checks the structural integrity by applying loads to assess its ability to bear weight under designed conditions.</span>
+                        </li>
+                        <li class="test-item">
+                            Non-Destructive Testing (NDT)
+                            <span class="tooltip">Inspects materials and structures for defects without causing damage, ensuring safety and reliability.</span>
+                        </li>
+                        <li class="test-item">
+                            Deflection Testing
+                            <span class="tooltip">Measures the displacement or bending of a structure under load to evaluate its flexibility and strength.</span>
+                        </li>
+                        <li class="test-item">
+                            Flexural Testing
+                            <span class="tooltip">Tests the bending strength of materials like beams to ensure they can withstand expected stresses.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="testing-card123">
+                <div class="card-inner123">
+                    <h3>Geotechnical Testing</h3>
+                    <ul>
+                        <li class="test-item">
+                            Standard Penetration Test (SPT)
+                            <span class="tooltip">Determines soil density and strength by measuring resistance to a standardized penetration.</span>
+                        </li>
+                        <li class="test-item">
+                            Cone Penetration Test (CPT)
+                            <span class="tooltip">Evaluates soil properties by driving a cone into the ground and measuring resistance and friction.</span>
+                        </li>
+                        <li class="test-item">
+                            Pile Load Test
+                            <span class="tooltip">Assesses the load-bearing capacity of foundation piles under static conditions.</span>
+                        </li>
+                        <li class="test-item">
+                            Pile Integrity Test (PIT)
+                            <span class="tooltip">Detects structural soundness and potential flaws in foundation piles using wave propagation techniques.</span>
+                        </li>
+                        <li class="test-item">
+                            Pile Dynamic Analysis (PDA)
+                            <span class="tooltip">Measures the dynamic response of piles to evaluate load capacity and soil resistance.</span>
+                        </li>
+                        <li class="test-item">
+                            Friction Testing
+                            <span class="tooltip">Determines the frictional resistance of bored piles for accurate foundation design.</span>
+                        </li>
+                        <li class="test-item">
+                            Radial Load Test
+                            <span class="tooltip">Tests lateral load-bearing capacity, often used in soil stabilization and foundation analysis.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
