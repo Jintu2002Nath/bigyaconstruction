@@ -1,3 +1,93 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navList = document.querySelector('nav ul');
+
+    // Mobile menu functionality
+    if (mobileMenuBtn && navList) {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navList.classList.toggle('show');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navList.classList.contains('show')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navList.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navList.classList.remove('show');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navList.classList.remove('show');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    // Navigation active state
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Remove active class from all links
+            navLinks.forEach(link => link.classList.remove('active'));
+            // Add active class to clicked link
+            this.classList.add('active');
+            
+            // Close mobile menu after clicking a link
+            if (window.innerWidth <= 768) {
+                navList.classList.remove('show');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Footer year
+    const yearSpan = document.querySelector('.footer-bottom .year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Add scroll event listener for header shadow
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 0) {
+            header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.boxShadow = 'none';
+        }
+    });
+});
+
 const swiper = new Swiper('.swiper-container', {
     loop: true,
     pagination: {
